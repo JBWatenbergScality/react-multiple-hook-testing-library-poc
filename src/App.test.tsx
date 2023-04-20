@@ -99,8 +99,11 @@ describe("useIncrementer and useSquare hooks", () => {
 
     expect(result.current).toBe(1);
 
-    const { result: result2 } = renderHook("inc", () => useIncrementer());
+    const { result: result2 } = renderHook("inc2", () => useIncrementer());
     expect(result.current).toBe(2);
+    expect(result2.current).toBe(2);
+    expect(result.all).toStrictEqual([2, 1, 0]);
+    expect(result2.all).toStrictEqual([2, 1]);
 
     const { result: result3 } = renderHook("square", () => useSquare());
 
